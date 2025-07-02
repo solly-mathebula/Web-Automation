@@ -6,7 +6,7 @@ Feature: Add Products to Cart
 
   Background:
     Given I am on the Takealot homepage
-
+  @regression
   Scenario: Add K3 Mechanical Keyboard to cart
     When I search for K3 mechanical keyboard
     And I select the K3 mechanical keyboard from the search results
@@ -15,6 +15,7 @@ Feature: Add Products to Cart
     Then I should see a confirmation message with text Item added to cart
     And I should see the Go to Cart button
 
+  @smoke
   Scenario Outline: Add multiple products to cart
     When I search for <Item>
     And I select the <Item> from the search results

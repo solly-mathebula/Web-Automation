@@ -4,14 +4,32 @@ import com.microsoft.playwright.Page;
 import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.*;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.Properties;
 
 public class CommonFunctions implements ConcurrentEventListener {
+
+    public static Properties readPropertiesFile(String fileName){
+        try {
+            String path = "src/test/resources/"+fileName+".properties";
+            FileInputStream fis = new FileInputStream(path);
+            Properties properties = new Properties();
+            properties.load(fis);
+            fis.close();
+
+            return properties;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to load config.properties");
+        }
+    }
     public static String captureScreenshotBase64() {
        try{
 
