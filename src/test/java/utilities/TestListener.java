@@ -1,12 +1,9 @@
 package utilities;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.microsoft.playwright.Page;
+import hooks.Hooks;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-import java.nio.file.Paths;
 
 public class TestListener implements ITestListener {
 
@@ -24,11 +21,12 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         ExtentTestManager.getTest().pass("Test passed");
+
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-
+        Hooks.errorMsg = result.getThrowable().getMessage();
         ExtentTestManager.getTest().fail(result.getThrowable().getMessage()).addScreenCaptureFromBase64String(CommonFunctions.captureScreenshotBase64(),"Failure Screenshot");
 
     }

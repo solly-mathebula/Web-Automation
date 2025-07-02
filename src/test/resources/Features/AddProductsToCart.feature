@@ -15,6 +15,22 @@ Feature: Add Products to Cart
     Then I should see a confirmation message with text Item added to cart
     And I should see the Go to Cart button
 
+  @regression
+  Scenario: Add JBL speaker to cart
+    When I search for JBL speaker
+    And I select the JBL speaker from the search results
+    And I click the Add to Cart button
+    Then I should see a confirmation message with text Item added to cart
+    And I should see the Go to Cart button
+
+  @regression
+  Scenario: Add Apple iPhone 14 to cart
+    When I search for Apple iPhone 14
+    And I select the Apple iPhone 14 from the search results
+    And I click the Add to Cart button
+    Then I should see a confirmation message with text Item added to cart
+    And I should see the Go to Cart button
+
   @smoke
   Scenario Outline: Add multiple products to cart
     When I search for <Item>
