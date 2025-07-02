@@ -19,8 +19,8 @@ public class CommunicationChannels {
         Properties mailProps = CommonFunctions.readPropertiesFile("mailer");
 
         if(mailProps.getProperty("sendMail").equalsIgnoreCase("true")){
-            final String fromEmail = mailProps.getProperty("mail.sender"); // change to your sender email
-            final String password = mailProps.getProperty("mail.password");     // Gmail App Password (not your actual Gmail password)
+            final String fromEmail = mailProps.getProperty("mail.sender"); 
+            final String password = mailProps.getProperty("mail.password");
 
             Properties props = CommonFunctions.readPropertiesFile("mailer");
 
